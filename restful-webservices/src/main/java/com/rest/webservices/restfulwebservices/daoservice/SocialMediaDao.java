@@ -13,11 +13,12 @@ import com.rest.webservices.restfulwebservices.dto.User;
 @Component
 public class SocialMediaDao {
 	private static List<User> users = new ArrayList<>();
-
+	 static int id = 0;
 	 static {
-		users.add(new User(1, "Sasi", LocalDate.now().minusYears(30)));
-		users.add(new User(2, "Ravi", LocalDate.now().minusYears(35)));
-		users.add(new User(3, "Appu", LocalDate.now().minusYears(40)));
+		
+		users.add(new User(++id, "Sasi", LocalDate.now().minusYears(30)));
+		users.add(new User(++id, "Ravi", LocalDate.now().minusYears(35)));
+		users.add(new User(++id, "Appu", LocalDate.now().minusYears(40)));
 
 	}
 
@@ -27,11 +28,15 @@ public class SocialMediaDao {
 
 	public User fetchAUser(int id) {
 		Predicate<? super User> predicate = user->user.getId().equals(id);
-		return users.stream().filter(predicate ).findFirst().get();
+		return users.stream().filter(predicate ).findFirst().isPresent()  ? 
+				users.stream().filter(predicate ).findFirst().get() : null
+				;
 	}
 
-	public void createUser(User user) {
+	public User createUser(User user) {
+		user.setId(++id);
 		users.add(user);
+		return user;
 	}
 
 }
