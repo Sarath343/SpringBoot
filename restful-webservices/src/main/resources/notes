@@ -10,7 +10,17 @@ In production devtools will be disabled by default.(even if dont comment in pom 
 To throw exception:
 	throw new exceptioName() ; 
 	in this exceptionname class @ResponseStatus(code=HttpStatus.NOT_FOUND) annotation etc can be given to the class
-	
+
+we can send normal successfull response object also in response entity i think 
+anyways if its error we can modify the response structure using the above class
 	
 	
 ResponseEntityExceptionHandler -> class responsible for all the spring exceptions
+When an exception is thrown , the response entity is returned by the ResponseEntityExceptionHandler class.
+There is a handleException method which will return the response entity in many cases.
+We can override this methode to return response entity if our type back .
+
+
+@ControllerAdvice:
+	variety of component annotation. valid across all controlllers
+	

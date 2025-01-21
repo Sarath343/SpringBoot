@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +35,7 @@ public class SocialMediaController {
 	public User fetchAUser(@PathVariable int id) {
 		User user = dao.fetchAUser(id);
 		if (user == null)
-			throw new UserNotFoundException("id "+id);
+			throw new UserNotFoundException("User with id "+id+" is not present");
 
 		return user;
 	}
@@ -46,4 +47,33 @@ public class SocialMediaController {
 				.toUri();
 		return ResponseEntity.created(location).build(); // to return a specific http request back
 	}
+	
+	@DeleteMapping(path = "/users/{id}")
+	public void deleteUser(@PathVariable int id) {
+		 dao.deleteuser(id);
+		
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

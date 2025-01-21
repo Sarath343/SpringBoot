@@ -39,4 +39,20 @@ public class SocialMediaDao {
 		return user;
 	}
 
+	public void deleteuser(int id2) {
+		Predicate<? super User> predicate = user->user.getId().equals(id2);
+		users.removeIf(predicate );
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
