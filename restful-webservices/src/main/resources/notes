@@ -1,0 +1,16 @@
+dcsc
+
+return ResponseEntity to set a new response
+
+So many logs coming in the broser means dev tools are enabled.
+Once dev tooils are disabled only few lines of errors will come 
+In production devtools will be disabled by default.(even if dont comment in pom file)
+
+
+To throw exception:
+	throw new exceptioName() ; 
+	in this exceptionname class @ResponseStatus(code=HttpStatus.NOT_FOUND) annotation etc can be given to the class
+	
+	
+	
+ResponseEntityExceptionHandler -> class responsible for all the spring exceptions
