@@ -3,6 +3,8 @@ package com.rest.webservices.restfulwebservices.webcontollers;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rest.webservices.restfulwebservices.daoservice.SocialMediaDao;
 import com.rest.webservices.restfulwebservices.dto.User;
+import com.rest.webservices.restfulwebservices.exception.UserNotFoundException;
 
 @RestController
 public class SocialMediaController {
@@ -41,7 +44,7 @@ public class SocialMediaController {
 	}
 
 	@PostMapping(path = "/users")
-	public ResponseEntity<User> createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@Valid @RequestBody  User user) {
 		User savedUser = dao.createUser(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(user.getId())
 				.toUri();
