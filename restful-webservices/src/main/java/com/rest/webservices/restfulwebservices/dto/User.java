@@ -2,6 +2,9 @@ package com.rest.webservices.restfulwebservices.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
 public class User {
 	public User(int id, String name, LocalDate birthDate) {
 		super();
@@ -10,8 +13,11 @@ public class User {
 		this.birthDate = birthDate;
 	}
 
+	
 	private Integer id;
+	@Size(min = 2,message = "Name should have ateast 2 Characters")
 	private String name;
+	@Past(message = "Birth date should be a past date")
 	private LocalDate birthDate;
 
 	public Integer getId() {
