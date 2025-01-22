@@ -24,3 +24,34 @@ We can override this methode to return response entity if our type back .
 @ControllerAdvice:
 	variety of component annotation. valid across all controlllers
 	
+	
+For documentation: Swagger
+	it will give the swagger ui which will show all he rest apis and (http://localhost:8080/swagger-ui/index.html)
+	Details of all the request response etc in a JSOn format also  (http://localhost:8080/v3/api-docs)
+	
+	
+Content negotiation:
+	The format(JSON or XML)  or the language(English , Malayalam)  the user want the response will be different
+	This is configured in the request headers .header called"Accept"
+	For this another format a dependancy is to be installed in pom
+		groupid : com.fasterxml.jackson.dataformat
+		artefact id : jackson-dataformat-xml 
+	If dependancy is set and the Application/xml is given in request header
+		The Object which is sent in the JSON will come in a xml format
+	if we setup Accept: Application/xml in 
+	
+	
+	
+Internationalization:
+	Accept-language header in the request .
+	Getting the language from the header and ge tthe already configured message in java 
+	
+	
+Versioning:
+	Important when deploying an api to production etc.
+	we can deploy another version of api and when the business is ready they cna start using the new vwersion 
+	1.by url  ex: /v1/users , v2/users
+	2.by request parameter
+	3.by headers
+	
+	
