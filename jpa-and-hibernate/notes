@@ -1,0 +1,41 @@
+CommandLineRunner has run method which will be ran when the server starts
+
+if we need to run any method on server start, 
+	create a class and implement CommandLineRunner class and annotate with @Component
+	write the needed logic in the run method
+	So when object of the class is created by the spring , the logic will be executed
+
+Using JDBC only is the older way. More java code to write(establishing connection etc)
+Using spring jdbc 
+	we can do operation on db by using jdbctemplate.update 	, jdbctemplate.query , jdbctemplate.queryforobject methods
+	to the above methods query is to be passed by defining the query for each cases.
+	
+Using JPA
+	Directly linking the table with a class called entity
+	And doing operation on the entity
+	@Entity on the class (jakarta.persistence.Entity) to map the table with entity
+	In the repository can do the operations
+		entityManager.merge(object) to save
+	EntityManager is annotated with @PersistenceContext in repository
+	on working with JPA repository should be annotated with @Transactional as well
+	
+Using Spring-data-JPA
+	Concept of JPA ie. mapping entity with Table remains same
+	The repository will be an interface, it will extend JpaRepository<Classname,dataTypeOfPrimaryKey>
+	So in the service layer it self can do operation like repository.findAll() etc(Find logic is already present in the JpaRepository class , and can be used)
+	If need to find by another column name 
+		add a method findByName(String name) in the repository interface , and use it in the service layer
+
+in JPA and Spring-data-JPA the Entity, Column are annotated with jakarta.persistence.* package
+We take annotation from org.hibernate.annotations.* also to use hibernate. 
+
+There are may ways to access or modify the data 
+	1.jdbc 
+	2.spring jdbc
+	3.JPA(Java persistence API)
+	4.Spring Data JPA
+	
+Hibernate is a way of implementation of JPA.
+JPA is an API .It is a specification, while hibernate is an implementation of the same
+To view queries ran behind while using jpa , 
+	in application.properties spring.jpa.show-sql=true
