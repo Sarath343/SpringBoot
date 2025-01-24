@@ -53,5 +53,44 @@ Versioning:
 	1.by url  ex: /v1/users , v2/users
 	2.by request parameter
 	3.by headers
+		X-API-VERSION=1
+	
+	url versioning and req parameter versioning leads to URI POLLUTION
+		Creating more urls 
+
+HATEOAS: hypermedia as the engine of aplication state
+	adding links to the the response by covering the response object in EntityModel
+	
+Serialization:
+	Converting the object to stream(JSON)
+	We can modify the serialization.ie. JSON names etc can be different from the object
+	Annotations:
+		@JsonProperty("New_fieldname_toPrintin_output")
+		if some field should nt be returned in response
+			1.Static filtering
+				@JsonIgnore 
+				@JsonIgnoreproperties("field1" , "field2")
+			2.Dynamic filtering
+				create of MappingJacksonValue(outputObject)
+				set filters to it before
+				create filters 
+				Basically , creating  MappingJacksonValue with different filters with same filter name,
+				and different filter logic so that in 2 requests 2 different filtering will happen.
+				Have to add the filtername to the class with annotation JsonFilter("filterName")
+				
+Actuator:
+	Production ready feature to monitor application 
+	management.endpoints.web.exposure.include=* will enable all end points of actuator
+	management.endpoints.web.exposure.include=beans,health for individual enabling 
+	Actuator will details of everything about application 
 	
 	
+@GetMapping(path = "/users/{id}/posts") when posts are also involved
+
+connecting to another databases involve configuration of datasource in the application.properties
+
+starter.security in pom will add spring security
+	so all the api s will be password protected
+	so if need to configure existing setup need to override spring filter chain setup 
+	
+	 

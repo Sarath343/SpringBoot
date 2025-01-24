@@ -54,29 +54,15 @@ public class SocialMediaController {
 	@DeleteMapping(path = "/users/{id}")
 	public void deleteUser(@PathVariable int id) {
 		 dao.deleteuser(id);
-		
-		
+	}
+	
+	//versioning by request parameter | req will be /getdat?version=1
+	@GetMapping(path="/getData" ,  params="version=1")
+	public String getFirstVersion(){
+		return new String("This is from version 1");
+	}
+	@GetMapping(path="/getData" ,  params="version=2")
+	public String getSecondVersion(){
+		return new String("This is from version 2");
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
