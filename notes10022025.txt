@@ -1,0 +1,87 @@
+@ConfigurationProperties(prefix = "server")
+public class ServerProperties {}
+
+@Autowired
+DatabaseConfigProperties databaseConfigProperties;
+
+
+
+
+switch(value){
+	case "a":
+		return "from a" ;
+	case "b":
+		return "from b";
+	default:
+		return "invalid";
+
+
+}
+
+
+
+Declaring an object with an interface reference restricts access to only the methods defined in the interface.
+Declaring an object with the class reference allows access to all methods of that class.
+Polymorphism allows flexibility by programming to an interface, but it also limits method access.
+
+
+
+Getting application context
+ApplicationContext context = ApplicationContextProvider.getApplicationContext();
+MyClass mClass = context.getBean(MyClass.class);
+
+
+
+-------------
+Caching in Java:
+
+1.
+HashMap and ConcurrenthashMap:
+	ConcurrenthashMap is thread safe / synchronized : hashmap is not thread safe
+	
+	while iterating using multiple thread , hashmap may give ConcurrentModificationException
+	ConcurrenthashMap wont give any exception in the above case
+	
+	null can be a key in hashmap
+	null cannot be a key in concurrenthashmap
+	
+	concurrenthashmap to use when multiple threads are involved 
+	
+	
+ConcurrenthashMap has a cool method computeIfAbsent(key,k->expenssiveOperation())
+computeIfAbsent will take the key value and check if any value already exists in the concurrenthashmap
+	if exists it will return that value 
+	if not it will fo the expenssiveOperation and compute the value and return the value and add to the concurrenthashmap as well
+	
+	
+2.	Using springboot annotations 
+
+write a class CacheConfig annotated with @EnableCache and @COnfiguration  
+	It allows methods annotated with @Cacheable, @CachePut, and @CacheEvict to cache results automatically.
+	
+ @Cacheable(value = "products", key = "#id") // Caches result
+    public String getProductById(Long id) {
+        System.out.println("Fetching product from DB...");
+        return "Product-" + id;
+    }
+
+    @CachePut(value = "products", key = "#id") // Updates cache
+    public String updateProduct(Long id) {
+        System.out.println("Updating product...");
+        return "Updated-Product-" + id;
+    }
+
+    @CacheEvict(value = "products", key = "#id") // Removes specific cache
+    public void deleteProduct(Long id) {
+        System.out.println("Deleting product...");
+    }
+
+    @CacheEvict(value = "products", allEntries = true) // Clears entire cache
+    public void clearAllCache() {
+        System.out.println("Clearing all cache...");
+    }
+	
+	
+	
+	
+------------------------
