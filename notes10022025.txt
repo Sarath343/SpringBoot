@@ -64,6 +64,8 @@ write a class CacheConfig annotated with @EnableCache and @COnfiguration
         System.out.println("Fetching product from DB...");
         return "Product-" + id;
     }
+The first time getProductById() is called, the data is fetched from the database.
+Subsequent calls return the cached data.
 
     @CachePut(value = "products", key = "#id") // Updates cache
     public String updateProduct(Long id) {
