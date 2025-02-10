@@ -21,7 +21,7 @@ switch(value){
 
 
 Declaring an object with an interface reference restricts access to only the methods defined in the interface.
-Declaring an object with the class reference allows access to all methods of that class.
+Declaring an object with the class reference allows access to all methods of that class and the methods of interface.
 Polymorphism allows flexibility by programming to an interface, but it also limits method access.
 
 
