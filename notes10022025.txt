@@ -87,3 +87,9 @@ Subsequent calls return the cached data.
 	
 	
 ------------------------
+11/02
+Java memoryModel
+2 types of memory
+	1.main memory (heap and static memory) -where all the objects and class level variables reside
+	2.Workign memory - each threads has its own copy of variables . Those are stored here
+	
