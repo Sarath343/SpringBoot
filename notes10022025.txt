@@ -92,4 +92,58 @@ Java memoryModel
 2 types of memory
 	1.main memory (heap and static memory) -where all the objects and class level variables reside
 	2.Workign memory - each threads has its own copy of variables . Those are stored here
+
+------------------------
+13/02
+Space complexity:
+	If the code creates a new data structure proportional to input size n , the space complexity is O(n)
+	For recursive , the depth of function call is space complexity
 	
+	If no significant extra memory is used space complexity is O(1)
+	Temporary variable in the for loop takes O(1) only 
+	
+Binary search of sorted array:
+	time O(log(n)base2)  : each iteration splits the array into 2 small arrays 
+	space:	O(1)
+	
+	public int binarySearch(int [] arr , target){
+		int left = 0 ; 
+		int right = 0 ; 
+		while(left<=right){
+			mid = left+(right-left)/2 ;
+			if(target == arr[mid])
+				return mid;
+			else if(target>arr[mid]){
+				left = mid+1 ;
+			}
+			else
+				right = mid-1; 
+		}
+		return -1 ;
+	}
+	
+
+Fibonacci - recursion
+	time : O(2^n)
+	space: O(n)
+	
+	int fibonacci(n){
+		if(n<=1)
+			return n;
+		return fibonacci(n-1) +fibonacci(n-2) ;
+	}
+	
+					fib(5)
+				fib(4)		fib(3)
+		fib(3)		fib(3)	fi(2)	fib(1)
+	fib(2)	fib(1)	fib(2) fib(1)	fib(1) fib(0) 1
+	
+	nan increment in n is incresing the number of executions exponentially
+	fib(1) ->	1
+	fib(2) ->	2
+	fib(3) ->	4
+	fib(4) ->	8
+	increasing n increments the number of function calls by 2^n so O(2^n)
+	
+	space complexity is counted by number the depth of recusrion here it is n 
+
