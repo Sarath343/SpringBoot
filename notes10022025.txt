@@ -38,8 +38,8 @@ Caching in Java:
 1.
 HashMap and ConcurrenthashMap:
 	ConcurrenthashMap is thread safe / synchronized : hashmap is not thread safe
-	
-	while iterating using multiple thread , hashmap may give ConcurrentModificationException
+	We can modify the elements of the concurrenthashMap simultaneously with multiple threads.
+	If we update while iterating , hashmap will give ConcurrentModificationException but consurrenthashmap wont
 	ConcurrenthashMap wont give any exception in the above case
 	
 	null can be a key in hashmap
